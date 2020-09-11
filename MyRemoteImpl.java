@@ -1,0 +1,32 @@
+import java.rmi.*;
+import java.rmi.server.*;
+
+public class MyRemoteImpl extends UnicastRemoteObject implements MyRemote 
+{
+	public String sayHello()
+	{
+		return "Server Says, Hey!! ";
+	}
+	//more code class here...
+
+	public MyRemoteImpl() throws RemoteException 
+	{
+		//constructor de mi clase...
+
+	}
+
+	public static void main(String[] args) 
+	{
+		try
+		{
+			MyRemote service = new MyRemoteImpl();
+			Naming.rebind("Remote_Hello", service);
+
+		}catch(Exception ex)
+		{
+			ex.printStackTrace();
+		}
+	}
+
+
+}
